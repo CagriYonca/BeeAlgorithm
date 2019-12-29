@@ -42,6 +42,7 @@ class PioneerBee():
         self.capacities2 = pCapacities  # NULL
         self.demands = pDemands
         self.distances = pDistances
+        self.cost_val = 0
 
         self.pioneer_bees = np.zeros((self.num_of_customers, self.num_of_stores))
 
@@ -60,15 +61,10 @@ class PioneerBee():
                     self.pioneer_bees[customer, seed] = 1
                     self.capacities[seed] -= self.demands[customer]
 
-    def evaluate_cost_function(self, distances, pioneerBee_matrix, demands):
+    def evaluate_cost_function(self):
         for i in range(self.num_of_customers):
-
-        print(len(distances)
-              )
-        print(pioneerBee_matrix)
-        print(demands)
-
+            self.cost_val += self.distances[i * self.num_of_stores + np.where(self.pioneer_bees[i] == 1)[0][0]] * self.demands[i]
 
 a = Bee_Algorithm(10, 0,"Depo-Kapasite.txt","Müşteri-Talep.txt","Uzaklık-km.txt")
 pri = a.PioneerBees[0]
-pri.evaluate_cost_function(pri.distances, pri.pioneer_bees, pri.demands)
+pri.evaluate_cost_function()
