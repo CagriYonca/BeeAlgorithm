@@ -35,12 +35,11 @@ class Bee_Algorithm():
     def print_matrix(self, index):
         print(self.PioneerBees[index].get_matrix()[0])
 
-
 class PioneerBee():
     def __init__(self, pStores, pCustomers, pCapacities, pDemands, pDistances):
         self.num_of_stores = pStores
         self.num_of_customers = pCustomers
-        self.capacities2 = pCapacities
+        self.capacities2 = pCapacities  # NULL
         self.demands = pDemands
         self.distances = pDistances
 
@@ -61,4 +60,15 @@ class PioneerBee():
                     self.pioneer_bees[customer, seed] = 1
                     self.capacities[seed] -= self.demands[customer]
 
+    def evaluate_cost_function(self, distances, pioneerBee_matrix, demands):
+        for i in range(self.num_of_customers):
+
+        print(len(distances)
+              )
+        print(pioneerBee_matrix)
+        print(demands)
+
+
 a = Bee_Algorithm(10, 0,"Depo-Kapasite.txt","Müşteri-Talep.txt","Uzaklık-km.txt")
+pri = a.PioneerBees[0]
+pri.evaluate_cost_function(pri.distances, pri.pioneer_bees, pri.demands)
